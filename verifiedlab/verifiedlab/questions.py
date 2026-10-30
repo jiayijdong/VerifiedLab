@@ -1,0 +1,43 @@
+"""Key questions of the perovskite-solar-cell field that the released records can answer, each with the librarian calls
+that supply its evidence. Ids are stable so `ask <id>` works from the workspace."""
+KEY_QUESTIONS = [
+    {"id": 1, "topic": "Absorber family", "question": "Which kind of perovskite absorber reaches the highest reported efficiency?",
+     "calls": [{"tool": "breakdowns"}, {"tool": "trend", "args": {"contract": {"composition_prefix": "FAPbI3", "composition_excludes": ["Cs", "MA"]}}}],
+     "why": "The field moved from MAPbI3 to FA-rich and multi-cation absorbers; the records let the shift be measured rather than asserted."},
+    {"id": 2, "topic": "Surface passivation", "question": "Does a surface treatment raise reported efficiency in the FAPbI3 + MACl family, and is the stability of treated devices established?",
+     "calls": [{"tool": "cohort"}, {"tool": "top_values", "args": {"field": "Perovskite_surface_treatment_material", "contract": "default", "pce_min": 22}}, {"tool": "stability"}],
+     "why": "Surface passivation (PEAI, OAI and other ammonium salts) is the most common lever in recent champion devices; stability is its usual justification."},
+    {"id": 3, "topic": "Architecture", "question": "Do n-i-p or p-i-n devices lead, and has that changed over the years?",
+     "calls": [{"tool": "breakdowns"}, {"tool": "trend", "args": {"contract": {"architecture": "PIN"}}}, {"tool": "trend", "args": {"contract": {"architecture": "NIP"}}}],
+     "why": "Inverted (p-i-n) cells caught up with regular cells after self-assembled-monolayer hole contacts appeared."},
+    {"id": 4, "topic": "Transport layers", "question": "Which electron- and hole-transport layers are associated with the highest efficiencies?",
+     "calls": [{"tool": "breakdowns"}, {"tool": "top_values", "args": {"field": "HTL_stack_sequence", "pce_min": 24}}, {"tool": "top_values", "args": {"field": "ETL_stack_sequence", "pce_min": 24}}],
+     "why": "SnO2, SAM-based HTLs (2PACz, Me-4PACz) and NiOx/SAM stacks define today's leading device stacks."},
+    {"id": 5, "topic": "Bandgap", "question": "What bandgap window do high-efficiency single-junction devices occupy?",
+     "calls": [{"tool": "bandgap", "args": {"pce_min": 22}}, {"tool": "bandgap", "args": {"pce_min": 20}}],
+     "why": "The Shockley-Queisser optimum is near 1.3-1.4 eV, yet champion perovskites cluster at 1.5-1.6 eV; the records quantify the window."},
+    {"id": 6, "topic": "Area scaling", "question": "How much does reported efficiency fall when the active area reaches 1 cm2 or more, and which stacks survive scale-up?",
+     "calls": [{"tool": "area"}],
+     "why": "Lab records are mostly below 0.1 cm2; the efficiency gap at large area is the central scaling problem."},
+    {"id": 7, "topic": "Additives", "question": "Which precursor additives dominate among devices above 22 % efficiency?",
+     "calls": [{"tool": "top_values", "args": {"field": "Perovskite_additive_compound", "pce_min": 22}}, {"tool": "cohort"}],
+     "why": "MACl-assisted crystallisation of FAPbI3 is the most reproduced recipe in the corpus; additives are a Material-synthesis category (85.31 %)."},
+    {"id": 8, "topic": "Processing", "question": "Which antisolvent and solvent systems are used in the best devices?",
+     "calls": [{"tool": "top_values", "args": {"field": "Perovskite_deposition_spin_coating_antisolvent", "pce_min": 22}}, {"tool": "top_values", "args": {"field": "Perovskite_deposition_solvents_compound", "pce_min": 22}}],
+     "why": "Antisolvent engineering (chlorobenzene, diethyl ether, ethyl acetate, anisole) controls film quality; it is a procedural field with lower reliability."},
+    {"id": 9, "topic": "Lead-free and inorganic", "question": "Are tin-containing or all-inorganic caesium perovskites catching up with lead-halide hybrids?",
+     "calls": [{"tool": "breakdowns"}, {"tool": "trend", "args": {"contract": {"composition_contains": "Sn"}}}, {"tool": "trend", "args": {"contract": {"composition_prefix": "Cs"}}}],
+     "why": "Toxicity and thermal stability motivate both directions; the records show how far each is from the hybrid frontier."},
+    {"id": 10, "topic": "Stability", "question": "Is long-term operational stability established for the leading recipe family?",
+     "calls": [{"tool": "stability"}, {"tool": "cohort"}, {"tool": "reliability"}],
+     "why": "Stability is the least reliable category (70.31 %); the harness routes it to human review rather than answering from extractions."},
+    {"id": 11, "topic": "Encapsulation", "question": "Do encapsulated devices report better retained efficiency than unencapsulated ones?",
+     "calls": [{"tool": "stability"}, {"tool": "top_values", "args": {"field": "Encapsulation_method"}}],
+     "why": "Encapsulation is a Device-fabrication field (93.05 %), but the retained-PCE outcome lives in the stability category; the gate separates the two."},
+    {"id": 12, "topic": "Reliability", "question": "Which parts of a literature-extracted device record can an AI scientist trust, and which need a human?",
+     "calls": [{"tool": "reliability"}],
+     "why": "The harness ships category-level judged accuracy with the data; this is the contract every other answer rests on."},
+]
+
+def by_id(i: int):
+    return next((q for q in KEY_QUESTIONS if q["id"] == i), None)

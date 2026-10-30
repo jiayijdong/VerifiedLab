@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VerifiedLab</title>
+<meta name="description" content="VerifiedLab research workspace: verified literature records, field-level verification, reliability-scoped AI scientist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/ui/css/tokens.css">
+<link rel="stylesheet" href="/ui/css/app.css">
+<link rel="stylesheet" href="/ui/css/gl.css">
+<script>try{var t=localStorage.getItem("vl.theme")||"system";var d=t==="dark"||(t==="system"&&matchMedia("(prefers-color-scheme: dark)").matches);if(d)document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script type="importmap">{"imports":{"three":"/ui/vendor/three/three.module.js","three/addons/":"/ui/vendor/three/addons/"}}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%232563EB'/%3E%3Cpath d='M7 12.5l3 3 7-7' stroke='white' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell" id="shell">
+  <aside class="sidebar" id="sidebar" aria-label="Navigation">
+    <div class="sidebar-top">
+      <button id="launcher-trigger" class="launcher-trigger" type="button" popovertarget="app-launcher" aria-haspopup="dialog" aria-expanded="false" aria-controls="app-launcher" title="Switch module">
+        <span class="grip" id="launcher-grip"></span><span class="brand">VerifiedLab</span><span class="chev" id="launcher-chev"></span>
+      </button>
+    </div>
+    <div class="sidebar-module" id="sidebar-module"></div>
+    <nav class="sidebar-nav" id="sidebar-nav" aria-label="Section navigation"></nav>
+    <div class="sidebar-bottom">
+      <a class="nav-item" id="nav-settings" href="#/settings"></a>
+      <div class="user"><span class="avatar" id="user-avatar"></span><span><span id="user-name">Researcher</span><small id="user-sub">local session</small></span></div>
+    </div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <button class="btn btn-ghost btn-icon" id="sidebar-toggle" type="button" aria-label="Toggle sidebar" aria-pressed="false"></button>
+      <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"></nav>
+      <div class="topbar-right" id="topbar-right"></div>
+    </header>
+    <main id="main" class="main" tabindex="-1"></main>
+  </div>
+</div>
+<div class="scrim" id="scrim"></div>
+<div id="app-launcher" class="launcher" popover role="dialog" aria-label="VerifiedLab modules">
+  <div class="launcher-head"><span>Modules</span><span class="muted small">Esc to close</span></div>
+  <div class="launcher-grid" id="launcher-grid" role="list"></div>
+  <div class="launcher-foot"><span><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> move</span><span><kbd>Enter</kbd> open</span></div>
+</div>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+<script type="module" src="/ui/js/app.js"></script>
+</body>
+</html>

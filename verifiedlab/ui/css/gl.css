@@ -1,0 +1,40 @@
+/* 3D viewers (device stack, corpus cloud) — overlay chrome, labels, legend. Colours come from tokens.css. */
+.gl-host { position: relative; width: 100%; border-radius: var(--r-lg); overflow: hidden; background: radial-gradient(ellipse 80% 70% at 50% 35%, var(--gl-glow) 0%, var(--surface-2) 70%); border: 1px solid var(--border); }
+.gl-host.flush { border: 0; border-radius: 0; }
+.gl-stage { position: absolute; inset: 0; }
+.gl-canvas { display: block; width: 100% !important; height: 100% !important; }
+.gl-labels { position: absolute; inset: 0; overflow: hidden; }
+.gl-labels > div { pointer-events: none; }
+.gl-label { display: inline-flex; align-items: center; gap: 6px; padding: 2px 8px 2px 6px; border-radius: 999px; background: var(--gl-label-bg); border: 1px solid var(--border); color: var(--fg); font: 500 11px/1.4 var(--mono); white-space: nowrap; backdrop-filter: blur(4px); box-shadow: var(--shadow-sm); transition: transform var(--ease), border-color var(--ease); }
+.gl-label i { width: 8px; height: 8px; border-radius: 50%; background: var(--muted-2); flex: none; }
+.gl-label small { color: var(--muted); font-family: var(--font); font-size: 10.5px; }
+.gl-label.hl { border-color: var(--primary); transform: translateX(3px); }
+.gl-label.bad { border-color: var(--bad-border); color: var(--bad); }
+.role-substrate { background: #9fd8e6 !important; } .role-tco { background: #5fc3cf !important; } .role-etl { background: #3b8dff !important; } .role-perovskite { background: #4a2416 !important; } .role-htl { background: #f0a24b !important; } .role-interlayer { background: #a08bff !important; } .role-metal { background: #d4af37 !important; } .role-carbon { background: #2b2b30 !important; } .role-other { background: #a3a3a3 !important; }
+.gl-ui { position: absolute; inset: 0; pointer-events: none; }
+.gl-tools { position: absolute; top: 10px; right: 10px; display: flex; align-items: center; gap: 6px; pointer-events: auto; }
+.gl-btn { height: 26px; min-width: 26px; padding: 0 7px; border: 1px solid var(--border); border-radius: var(--r-sm); background: var(--gl-label-bg); color: var(--fg-2); font-size: 13px; line-height: 1; backdrop-filter: blur(4px); }
+.gl-btn:hover { color: var(--fg); border-color: var(--border-strong); } .gl-btn[aria-pressed="true"] { color: var(--primary); border-color: var(--info-border); background: var(--selected); }
+.gl-explode { display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 8px; border: 1px solid var(--border); border-radius: var(--r-sm); background: var(--gl-label-bg); color: var(--muted); font-size: 11px; backdrop-filter: blur(4px); }
+.gl-explode input { width: 80px; accent-color: var(--primary); margin: 0; }
+.gl-foot { position: absolute; left: 12px; right: 12px; bottom: 8px; display: flex; justify-content: space-between; gap: 8px; font-size: 11px; color: var(--muted); }
+.gl-foot .gl-arch { color: var(--fg-2); }
+.gl-tip { position: absolute; left: 0; top: 0; display: none; flex-direction: column; gap: 2px; max-width: 260px; padding: 8px 10px; border-radius: var(--r-md); background: var(--tip-bg); color: var(--tip-fg); font-size: 11.5px; line-height: 1.4; box-shadow: var(--shadow-md); pointer-events: none; z-index: 5; }
+.gl-tip.show { display: flex; } .gl-tip b { font-family: var(--mono); font-weight: 600; } .gl-tip .gl-role { opacity: .85; } .gl-tip .muted { opacity: .65; } .gl-tip em { font-style: normal; opacity: .7; }
+.gl-empty { display: grid; place-items: center; height: 100%; min-height: 120px; padding: 16px; text-align: center; color: var(--muted); font-size: var(--fs-sm); }
+.gl-legend { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: var(--fs-xs); color: var(--fg-2); margin-top: var(--sp-2); }
+.gl-legend span { display: inline-flex; align-items: center; gap: 5px; } .gl-legend i { width: 9px; height: 9px; border-radius: 3px; display: inline-block; }
+.gl-axis { font: 500 11px var(--font); color: var(--fg-2); background: var(--gl-label-bg); padding: 1px 6px; border-radius: 4px; white-space: nowrap; }
+.gl-tick { font: 10.5px var(--mono); color: var(--muted); white-space: nowrap; }
+/* hero band on the workbench */
+.hero3d { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(300px, 1fr); gap: var(--sp-4); margin-bottom: var(--sp-6); }
+@media (max-width: 1000px) { .hero3d { grid-template-columns: 1fr; } }
+.hero3d .card { position: relative; overflow: hidden; padding: 0; }
+.hero3d .hero-cap { position: absolute; left: 0; right: 0; top: 0; padding: var(--sp-3) var(--sp-4); display: flex; align-items: center; gap: var(--sp-2); pointer-events: none; z-index: 2; }
+.hero3d .hero-cap > * { pointer-events: auto; }
+.hero3d .hero-cap h3 { font-size: var(--fs-base); } .hero3d .hero-cap .s { color: var(--muted); font-size: var(--fs-xs); }
+.hero3d .gl-host { border: 0; border-radius: 0; }
+.hero3d .gl-tools { top: auto; bottom: 30px; }
+.gl-btn .icon { vertical-align: -2px; }
+/* studio: compact viewer inside a pane */
+.gl-inpane { margin: 0 calc(-1 * var(--sp-4)) var(--sp-3); border-radius: 0; border-left: 0; border-right: 0; border-top: 0; }

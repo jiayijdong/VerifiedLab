@@ -1,0 +1,29 @@
+{
+  "policy": "verifiedlab-demo-workflow",
+  "version": "0.1.0",
+  "automation_threshold_percent": 85,
+  "threshold_scope": "Illustrative downstream policy from the manuscript's Verified Lab sketch: specialist agents reason only over categories whose judged accuracy exceeds the threshold; other categories go to human review.",
+  "category_reliability_percent": {
+    "Reference data": 99.50,
+    "Cell definition": 93.33,
+    "Device fabrication": 93.05,
+    "J-V metrics": 93.12,
+    "Device stack": 89.95,
+    "Material synthesis": 85.31,
+    "Stability metrics": 70.31
+  },
+  "reliability_source": "dataset/README.md data card: mean field accuracy by category judged by gpt-5-mini and o3 over 10,258 records",
+  "reliability_scope": "Category-level judged accuracy is not the probability that an individual value is correct.",
+  "field_category": {
+    "Ref_": "Reference data",
+    "Cell_": "Cell definition",
+    "ETL_": "Device stack",
+    "HTL_": "Device stack",
+    "Backcontact_": "Device stack",
+    "Encapsulation_": "Device fabrication",
+    "Perovskite_": "Material synthesis",
+    "JV_": "J-V metrics",
+    "Stabilized_": "J-V metrics",
+    "Stability_": "Stability metrics"
+  }
+}
