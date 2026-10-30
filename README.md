@@ -1,12 +1,16 @@
 ## VerifiedLab: Harnessing Knowns for Unknowns
 
-### [Paper](https://arxiv.org/abs/2610.37923) | [Dataset](https://huggingface.co/datasets/jiayijdong/VerifiedLab)
+### [Paper](https://arxiv.org/abs/2610.37923) | [Dataset](https://huggingface.co/datasets/jiayijdong/VerifiedLab) | [Demo](https://youtu.be/9TP1gdmzB4I)
 
 Yu Yao, Jiayi Dong, Yang Yang, Shuiwang Ji, Ju Li
 
 This is the implementation of the paper "VerifiedLab: Harnessing Knowns for Unknowns". VerifiedLab is a harness that carries the experimental literature to AI scientists. A generator agent writes one typed record per paper and a verifier agent checks it field by field, both under written, versioned scientific policies (*Skills*). On top of the verified records, a team of AI scientists works with a human researcher: a PI agent plans, a librarian computes evidence from the records, specialist agents draft claims, and a reliability gate and a scientific critic check every claim against its evidence.
 
 <p align="center"><img src="docs/framework.png" width="900" alt="VerifiedLab: the harness loop and the discovery loop"></p>
+
+A two-minute demo of the research workspace, recorded with the agents running on local open-weight models:
+
+<p align="center"><a href="https://youtu.be/9TP1gdmzB4I"><img src="docs/demo.png" width="720" alt="Watch the VerifiedLab demo on YouTube"></a></p>
 
 ## Code
 
